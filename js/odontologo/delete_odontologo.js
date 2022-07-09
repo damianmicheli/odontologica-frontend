@@ -1,8 +1,10 @@
+import {URL_BASE} from '../data';
+
 function deleteBy(id)
 {
           //con fetch invocamos a la API de odontologos con el método DELETE
           //pasandole el id en la URL
-          const url = 'https://odontologica-postgres.herokuapp.com/odontologos/'+ id;
+          const url = URL_BASE + '/odontologos/'+ id;
           const settings = {
               method: 'DELETE'
           }

@@ -1,3 +1,5 @@
+import {URL_BASE} from '../data';
+
 window.addEventListener('load', function () {
 
 
@@ -21,7 +23,7 @@ window.addEventListener('load', function () {
 
         //invocamos utilizando la función fetch la API odontologos con el método PUT que modificará
         //el odontologo que enviaremos en formato JSON
-        const url = 'https://odontologica-postgres.herokuapp.com/odontologos';
+        const url = URL_BASE + '/odontologos';
         const settings = {
             method: 'PUT',
             headers: {

@@ -1,9 +1,11 @@
+import {URL_BASE} from '../data';
+
 window.addEventListener('load', function () {
     (function(){
 
       //con fetch invocamos a la API de odontologos con el método GET
       //nos devolverá un JSON con una colección de odontologos
-      const url = 'https://odontologica-postgres.herokuapp.com/odontologos';
+      const url = URL_BASE + '/odontologos';
       const settings = {
         method: 'GET'
       }

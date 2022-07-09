@@ -1,3 +1,5 @@
+import {URL_BASE} from '../data';
+
 window.addEventListener("load", function () {
   //Al cargar la pagina buscamos y obtenemos el formulario donde estarán
   //los datos que el usuario cargará del nuevo paciente
@@ -26,7 +28,7 @@ window.addEventListener("load", function () {
     };
     //invocamos utilizando la función fetch la API pacientes con el método POST que guardará
     //el paciente que enviaremos en formato JSON
-    const url = "https://odontologica-postgres.herokuapp.com/pacientes";
+    const url = URL_BASE + '/pacientes';
     const settings = {
       method: "POST",
       headers: {
