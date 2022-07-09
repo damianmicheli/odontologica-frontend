@@ -1,5 +1,3 @@
-import {URL_BASE} from '../data';
-
 window.addEventListener('load', function () {
     (function(){
 

@@ -1,5 +1,3 @@
-import {URL_BASE} from '../data';
-
 window.addEventListener("load", function () {
   //Al cargar la pagina buscamos y obtenemos el formulario donde estarán
   //los datos que el usuario cargará del nuevo paciente

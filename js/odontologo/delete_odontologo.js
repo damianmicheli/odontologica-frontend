@@ -1,5 +1,3 @@
-import {URL_BASE} from '../data';
-
 function deleteBy(id)
 {
           //con fetch invocamos a la API de odontologos con el método DELETE

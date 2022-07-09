@@ -1,5 +1,3 @@
-const {URL_BASE} = require('../data');
-
 window.addEventListener('load', function () {
     (function(){
 
