@@ -3,7 +3,7 @@ window.addEventListener('load', function () {
 
       //con fetch invocamos a la API de pacientes con el método GET
       //nos devolverá un JSON con una colección de pacientes
-      const url = '/pacientes';
+      const url = 'https://odontologica-postgres.herokuapp.com/pacientes';
       const settings = {
         method: 'GET'
       }

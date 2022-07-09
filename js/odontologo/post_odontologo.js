@@ -16,7 +16,7 @@ window.addEventListener('load', function () {
         };
         //invocamos utilizando la función fetch la API odontologos con el método POST que guardará
         //el odontologo que enviaremos en formato JSON
-        const url = '/odontologos';
+        const url = 'https://odontologica-postgres.herokuapp.com/odontologos';
         const settings = {
             method: 'POST',
             headers: {
