@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>Pacientes</title>
+    <title>Odontólogos</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -11,9 +11,9 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.20/dist/sweetalert2.all.min.js"></script>
 
     <script type="text/javascript" src="/js/data.js"></script>
-    <script type="text/javascript" src="/js/paciente/get_paciente.js"></script>
-    <script type="text/javascript" src="/js/paciente/update_paciente.js"></script>
-    <script type="text/javascript" src="/js/paciente/delete_paciente.js"></script>
+    <script type="text/javascript" src="/js/odontologo/get_odontologo.js"></script>
+    <script type="text/javascript" src="/js/odontologo/update_odontologo.js"></script>
+    <script type="text/javascript" src="/js/odontologo/delete_odontologo.js"></script>
 </head>
 <body>
 <div class="container">
@@ -22,29 +22,24 @@
             <a class="nav-link" href="/">Volver al inicio</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/pacienteAlta.html">Alta de nuevo paciente</a>
+            <a class="nav-link" href="/odontologo-alta.html">Alta de nuevo odontólogo</a>
         </li>
     </ul>
 
-    <div id="div_paciente_table">
-        <h1>Pacientes</h1>
+    <div id="div_odontologo_table">
+        <h1>Odontólogos</h1>
         <div class="row col-md-12 table-responsive">
-            <table id="pacienteTable" class="table table-striped">
+            <table id="odontologoTable" class="table table-striped">
                 <thead>
                 <tr>
                     <th>Id</th>
                     <th>Nombre</th>
                     <th>Apellido</th>
-                    <th>DNI</th>
-                    <th>Fecha de ingreso</th>
-                    <th>Calle</th>
-                    <th>Nro.</th>
-                    <th>Localidad</th>
-                    <th>Provincia</th>
+                    <th>Matrícula</th>
                     <th>Eliminar</th>
                 </tr>
                 </thead>
-                <tbody id="pacienteTableBody">
+                <tbody id="odontologoTableBody">
 
                 </tbody>
             </table>
@@ -53,11 +48,11 @@
     <div class="row">
         <div class="col-sm-6" style="display: none;
 											background-color:#e6fffa; padding:10px; border-radius:3px"
-             id="div_paciente_updating">
-            <form id="update_paciente_form">
+             id="div_odontologo_updating">
+            <form id="update_odontologo_form">
                 <div class="form-group">
                     <label >Id:</label>
-                    <input type="text" class="form-control" id="paciente_id" readonly>
+                    <input type="text" class="form-control" id="odontologo_id" readonly>
                 </div>
                 <div class="form-group">
                     <label >Nombre:</label>
@@ -67,40 +62,16 @@
                     <label >Apellido:</label>
                     <input type="text" class="form-control" placeholder="apellido" id="apellido">
                 </div>
-
                 <div class="form-group">
-                    <label >DNI:</label>
-                    <input type="text" class="form-control" placeholder="dni" id="dni">
+                    <label >Matricula:</label>
+                    <input type="text" class="form-control" placeholder="matricula" id="matricula">
                 </div>
 
-                <div class="form-group">
-                    <label >Fecha de ingreso:</label>
-                    <input type="text" class="form-control" placeholder="fecha de ingreso" id="fecha-ingreso">
-                </div>
-
-                <div class="form-group">
-                    <label >Calle:</label>
-                    <input type="text" class="form-control" placeholder="calle" id="calle">
-                </div>
-
-                <div class="form-group">
-                    <label >Nro.:</label>
-                    <input type="text" class="form-control" placeholder="numero" id="numero">
-                </div>
-
-                <div class="form-group">
-                    <label >Localidad:</label>
-                    <input type="text" class="form-control" placeholder="localidad" id="localidad">
-                </div>
-
-                <div class="form-group">
-                    <label >Provincia:</label>
-                    <input type="text" class="form-control" placeholder="provincia" id="provincia">
-                </div>
 
                 <button type="submit" class="btn btn-primary">Modificar</button>
             </form>
 
+            
         </div>
     </div>
     <hr>

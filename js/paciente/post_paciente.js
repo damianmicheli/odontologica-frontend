@@ -80,6 +80,8 @@ window.addEventListener("load", function () {
     return fecha;
   }
 
+
+
   function convertirFecha(fecha) {
     return fecha.split("/").reverse().join("-");
   }
@@ -99,7 +101,7 @@ window.addEventListener("load", function () {
     let pathname = window.location.pathname;
     if (pathname === "/") {
       document.querySelector(".nav .nav-item a:first").addClass("active");
-    } else if (pathname == "/pacienteList.html") {
+    } else if (pathname == "/paciente-lista.html") {
       document.querySelector(".nav .nav-item a:last").addClass("active");
     }
   })();

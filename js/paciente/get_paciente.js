@@ -64,14 +64,14 @@ window.addEventListener('load', function () {
 
     (function(){
       let pathname = window.location.pathname;
-      if (pathname == "/pacienteList.html") {
+      if (pathname == "/paciente-lista.html") {
           document.querySelector(".nav .nav-item a:last").addClass("active");
       }
     })
 
-    
     function convertirFecha(fecha) {
       return fecha.split("-").reverse().join("/");
     }
+
     
     })
