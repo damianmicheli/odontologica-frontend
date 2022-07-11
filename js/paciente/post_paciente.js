@@ -1,4 +1,5 @@
 window.addEventListener("load", function () {
+
   //Al cargar la pagina buscamos y obtenemos el formulario donde estarán
   //los datos que el usuario cargará del nuevo paciente
   const formulario = document.querySelector("#add_new_paciente");
@@ -14,16 +15,15 @@ window.addEventListener("load", function () {
       nombre: document.querySelector("#nombre").value,
       apellido: document.querySelector("#apellido").value,
       dni: document.querySelector("#dni").value,
-      fechaIngreso: convertirFecha(
-        document.querySelector("#fecha-ingreso").value
-      ),
+      fechaIngreso: convertirFecha(document.querySelector("#fecha-ingreso").value),
       domicilio: {
         calle: document.querySelector("#calle").value,
         numero: document.querySelector("#numero").value,
         localidad: document.querySelector("#localidad").value,
-        provincia: document.querySelector("#provincia").value,
-      },
+        provincia: document.querySelector("#provincia").value
+      }
     };
+    
     //invocamos utilizando la función fetch la API pacientes con el método POST que guardará
     //el paciente que enviaremos en formato JSON
     const url = URL_BASE + '/pacientes';

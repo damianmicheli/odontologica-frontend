@@ -6,7 +6,7 @@ function deleteBy(id) {
     showCancelButton: true,
     confirmButtonColor: "#3085d6",
     cancelButtonColor: "#d33",
-    confirmButtonText: "Claro que si!",
+    confirmButtonText: "Claro que sí!",
     cancelButtonText: "No, mejor no",
   }).then((result) => {
     if (result.isConfirmed) {
@@ -16,18 +16,27 @@ function deleteBy(id) {
       const settings = {
         method: "DELETE",
       };
-      fetch(url, settings).then((response) => response.json());
+      fetch(url, settings).then((response) => response.json())
+      .then(data => {
 
-      //borrar la fila del paciente eliminado
-      let row_id = "#tr_" + id;
-      document.querySelector(row_id).remove();
+        //borrar la fila del paciente eliminado
+        let row_id = "#tr_" + id;
 
-      Swal.fire({
-        title: "Eliminado!",
-        text: "Se eliminó el paciente seleccionado.",
-        icon: "success",
-        confirmButtonText: "Perfecto!",
-      });
+        document.querySelector(row_id).remove();
+          Swal.fire({
+            title: "Eliminado!",
+            text: data,
+            icon: "success",
+            confirmButtonText: "Perfecto!"
+          });
+   })
+   .catch(error => {
+           //Si hay algun error se muestra un mensaje diciendo que el paciente
+           //no se pudo borrar y se intente nuevamente
+
+             Swal.fire("Maldición!", "Hubo un problema!", "error");
+    });
+
     }
   });
 }

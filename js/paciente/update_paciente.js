@@ -6,8 +6,9 @@ window.addEventListener('load', function () {
     const formulario = document.querySelector('#update_paciente_form');
 
     formulario.addEventListener('submit', function (event) {
-        let pacienteId = document.querySelector('#paciente_id').value;
+        event.preventDefault();
 
+        
         //creamos un JSON que tendrá los datos del paciente
         //a diferencia de un paciente nuevo en este caso enviamos el id
         //para poder identificarlo y modificarlo para no cargarlo como nuevo
@@ -16,12 +17,13 @@ window.addEventListener('load', function () {
             nombre: document.querySelector('#nombre').value,
             apellido: document.querySelector('#apellido').value,
             dni: document.querySelector('#dni').value,
-            fechaIngreso: document.querySelector('#fecha-ingreso').value,
-            calle: document.querySelector('#calle').value,
-            numero: document.querySelector('#numero').value,
-            matricula: document.querySelector('#matricula').value,
-            localidad: document.querySelector('#localidad').value,
-            provincia: document.querySelector('#provincia').value
+            fechaIngreso: convertirFecha(document.querySelector("#fecha-ingreso").value),
+            domicilio: {
+                calle: document.querySelector('#calle').value,
+                numero: document.querySelector('#numero').value,
+                localidad: document.querySelector('#localidad').value,
+                provincia: document.querySelector('#provincia').value
+            }
 
         };
 
@@ -35,8 +37,36 @@ window.addEventListener('load', function () {
             },
             body: JSON.stringify(formData)
         }
-          fetch(url,settings)
-          .then(response => response.json())
+
+        let notOk = false;
+        fetch(url,settings)
+        .then(res => {
+                notOk = !res.ok;
+            return res.json()
+        })
+        .then(data =>{
+            if (notOk) {
+                //Si hay algun error se muestra un mensaje diciendo que el odontologo
+                //no se pudo guardar y se intente nuevamente
+
+                Swal.fire("Maldición!", data, "error");
+            }
+            else{
+                 //Si no hay ningun error se muestra un mensaje diciendo que el odontologo
+                 //se agrego bien
+                
+                 Swal.fire(
+                    "Correcto!",
+                    "Ya actualizamos los datos de <strong>" + data.nombre + " " + data.apellido + "</strong>!",
+                    "success"
+                  ).then((result) => {
+                    if (result.isConfirmed) {
+                        location.reload()
+                    }
+                  })
+                  
+            }
+        })
 
     })
  })
@@ -57,14 +87,22 @@ window.addEventListener('load', function () {
               document.querySelector('#nombre').value = paciente.nombre;
               document.querySelector('#apellido').value = paciente.apellido;
               document.querySelector('#dni').value = paciente.dni;
-              document.querySelector('#fecha-ingreso').value = paciente.fecha-ingreso;
-              document.querySelector('#calle').value = paciente.calle;
-              document.querySelector('#numero').value = paciente.numero;
-              document.querySelector('#localidad').value = paciente.localidad;
-              document.querySelector('#provincia').value = paciente.provincia;
+             document.querySelector('#fecha-ingreso').value = desConvertirFecha(paciente.fechaIngreso);
+              document.querySelector('#calle').value = paciente.domicilio.calle;
+              document.querySelector('#numero').value = paciente.domicilio.numero;
+              document.querySelector('#localidad').value = paciente.domicilio.localidad;
+              document.querySelector('#provincia').value = paciente.domicilio.provincia;
               //el formulario por default esta oculto y al editar se habilita
               document.querySelector('#div_paciente_updating').style.display = "block";
           }).catch(error => {
-              alert("Error: " + error);
+              Swal.fire("Maldición!", error, "error");
           })
+      }
+
+      function convertirFecha(fecha) {
+        return fecha.split("/").reverse().join("-");
+      }
+
+      function desConvertirFecha(fecha) {
+        return fecha.split("-").reverse().join("/");
       }
