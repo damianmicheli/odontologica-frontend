@@ -42,8 +42,8 @@ window.addEventListener('load', function () {
             //como primer columna pondremos el boton modificar
             //luego los datos del turno
             //como ultima columna el boton eliminar
-            let strPaciente = turno.paciente.nombre.toUpperCase() + " " + turno.paciente.apellido.toUpperCase()
-            let strOdontologo = turno.odontologo.nombre.toUpperCase() + " " + turno.odontologo.apellido.toUpperCase()
+            let strPaciente = turno.paciente.nombre.toUpperCase() + " " + turno.paciente.apellido.toUpperCase() + " (" + turno.paciente.id + ")"
+            let strOdontologo = turno.odontologo.nombre.toUpperCase() + " " + turno.odontologo.apellido.toUpperCase() + " (" + turno.odontologo.id + ")"
 
             turnoRow.innerHTML = '<td>' + updateButton + '</td>' +
                     '<td class=\"td_paciente\">' + strPaciente + '</td>' +
