@@ -35,45 +35,39 @@ window.addEventListener("load", function () {
       body: JSON.stringify(formData),
     };
 
-    let error = false;
-    fetch(url, settings)
-      .then((res) => {
+    let notOk = false;
+    fetch(url,settings)
+    .then(res => {
+        notOk = !res.ok;
+        return res.json()
+    })
+    .then(data =>{
+        if (notOk) {
+            //Si hay algun error se muestra un mensaje diciendo que el paciente
+            //no se pudo guardar y se intente nuevamente
 
-        if (!res.ok) {
-          console.log("Ocurrió un error de tipo " + res.status);
-          error = true;
-        } else {
-        
-        return res.json();
+            Swal.fire("Maldición!", data, "error");
         }
-      })
-      .then((data) => {
-        if (error) {
-          //Si hay algun error se muestra un mensaje diciendo que el paciente
-          //no se pudo guardar y se intente nuevamente
-          Swal.fire("Maldición!", "Hubo un problema con los datos!", "error");
-        } else {
-          //Si no hay ningun error se muestra un mensaje diciendo que el paciente
-          //se agrego bien
+        else{
+             //Si no hay ningun error se muestra un mensaje diciendo que el paciente
+             //se agrego bien
 
-          Swal.fire(
-            "Correcto!",
-            "Ya registramos a " + data.nombre + " " + data.apellido + " como nuevo paciente!",
-            "success"
-          );
-          //se dejan todos los campos vacíos por si se quiere ingresar otro paciente
-          resetUploadForm();
+             Swal.fire(
+                "Correcto!",
+                "Ya registramos a <strong>" + data.nombre + " " + data.apellido + "</strong> como nuevo <strong>paciente</strong>!",
+                "success"
+              );
+             resetUploadForm();               
         }
-      })
-      .catch((e) => {
-        //Si hay algun error se muestra un mensaje diciendo que el paciente
-        //no se pudo guardar y se intente nuevamente
-        Swal.fire(
-          "Maldición!",
-          "No pudimos registrar este paciente por este extraño error: " + e,
-          "error"
-        );
-      });
+    })
+
+        .catch(error => {
+                //Si hay algun error se muestra un mensaje diciendo que el paciente
+                //no se pudo guardar y se intente nuevamente
+
+                  Swal.fire("Maldición!", "Hubo un problema inesperado!", "error");
+            }
+        )
   });
 
   function fechaActual() {

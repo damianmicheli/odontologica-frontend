@@ -19,10 +19,10 @@
 <div class="container">
     <ul class="nav nav-pills">
         <li class="nav-item">
-            <a class="nav-link" href="/">Volver al inicio</a>
+            <a class="nav-link" href="/">Agregar nuevo paciente</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/pacienteAlta.html">Alta de nuevo paciente</a>
+            <a class="nav-link" href="/pacienteList.html/">Todos</a>
         </li>
     </ul>
 
@@ -41,7 +41,7 @@
                     <th>Nro.</th>
                     <th>Localidad</th>
                     <th>Provincia</th>
-                    <th>Eliminar</th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tbody id="pacienteTableBody">
@@ -67,36 +67,11 @@
                     <label >Apellido:</label>
                     <input type="text" class="form-control" placeholder="apellido" id="apellido">
                 </div>
-
                 <div class="form-group">
-                    <label >DNI:</label>
-                    <input type="text" class="form-control" placeholder="dni" id="dni">
+                    <label >Matricula:</label>
+                    <input type="text" class="form-control" placeholder="matricula" id="matricula">
                 </div>
 
-                <div class="form-group">
-                    <label >Fecha de ingreso:</label>
-                    <input type="text" class="form-control" placeholder="fecha-ingreso" id="fecha-ingreso">
-                </div>
-
-                <div class="form-group">
-                    <label >Calle:</label>
-                    <input type="text" class="form-control" placeholder="calle" id="calle">
-                </div>
-
-                <div class="form-group">
-                    <label >Nro.:</label>
-                    <input type="text" class="form-control" placeholder="numero" id="numero">
-                </div>
-
-                <div class="form-group">
-                    <label >Localidad:</label>
-                    <input type="text" class="form-control" placeholder="localidad" id="localidad">
-                </div>
-
-                <div class="form-group">
-                    <label >Provincia:</label>
-                    <input type="text" class="form-control" placeholder="provincia" id="provincia">
-                </div>
 
                 <button type="submit" class="btn btn-primary">Modificar</button>
             </form>

@@ -15,7 +15,13 @@ window.addEventListener('load', function () {
             id: document.querySelector('#paciente_id').value,
             nombre: document.querySelector('#nombre').value,
             apellido: document.querySelector('#apellido').value,
+            dni: document.querySelector('#dni').value,
+            fechaIngreso: document.querySelector('#fecha-ingreso').value,
+            calle: document.querySelector('#calle').value,
+            numero: document.querySelector('#numero').value,
             matricula: document.querySelector('#matricula').value,
+            localidad: document.querySelector('#localidad').value,
+            provincia: document.querySelector('#provincia').value
 
         };
 
@@ -39,7 +45,7 @@ window.addEventListener('load', function () {
     //se encarga de llenar el formulario con los datos del paciente
     //que se desea modificar
     function findBy(id) {
-          const url = '/pacientes'+"/"+id;
+          const url = URL_BASE + '/pacientes'+"/"+id;
           const settings = {
               method: 'GET'
           }
@@ -50,7 +56,12 @@ window.addEventListener('load', function () {
               document.querySelector('#paciente_id').value = paciente.id;
               document.querySelector('#nombre').value = paciente.nombre;
               document.querySelector('#apellido').value = paciente.apellido;
-              document.querySelector('#matricula').value = paciente.matricula;
+              document.querySelector('#dni').value = paciente.dni;
+              document.querySelector('#fecha-ingreso').value = paciente.fecha-ingreso;
+              document.querySelector('#calle').value = paciente.calle;
+              document.querySelector('#numero').value = paciente.numero;
+              document.querySelector('#localidad').value = paciente.localidad;
+              document.querySelector('#provincia').value = paciente.provincia;
               //el formulario por default esta oculto y al editar se habilita
               document.querySelector('#div_paciente_updating').style.display = "block";
           }).catch(error => {

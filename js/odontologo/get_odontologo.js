@@ -50,8 +50,9 @@ window.addEventListener('load', function () {
 
         };
 
-    })
-    })
+        })
+   
+  })
 
     (function(){
       let pathname = window.location.pathname;

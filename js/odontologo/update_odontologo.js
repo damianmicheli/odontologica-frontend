@@ -6,7 +6,7 @@ window.addEventListener('load', function () {
     const formulario = document.querySelector('#update_odontologo_form');
 
     formulario.addEventListener('submit', function (event) {
-        let odontologoId = document.querySelector('#odontologo_id').value;
+        event.preventDefault();
 
         //creamos un JSON que tendrá los datos del odontologo
         //a diferencia de un odontologo nuevo en este caso enviamos el id
@@ -29,8 +29,36 @@ window.addEventListener('load', function () {
             },
             body: JSON.stringify(formData)
         }
-          fetch(url,settings)
-          .then(response => response.json())
+
+        let notOk = false;
+        fetch(url,settings)
+        .then(res => {
+                notOk = !res.ok;
+            return res.json()
+        })
+        .then(data =>{
+            if (notOk) {
+                //Si hay algun error se muestra un mensaje diciendo que el odontologo
+                //no se pudo guardar y se intente nuevamente
+
+                Swal.fire("Maldición!", data, "error");
+            }
+            else{
+                 //Si no hay ningun error se muestra un mensaje diciendo que el odontologo
+                 //se agrego bien
+                
+                 Swal.fire(
+                    "Correcto!",
+                    "Ya actualizamos los datos de <strong>" + data.nombre + " " + data.apellido + "</strong>!",
+                    "success"
+                  ).then((result) => {
+                    if (result.isConfirmed) {
+                        location.reload()
+                    }
+                  })
+                  
+            }
+        })
 
     })
  })
@@ -39,7 +67,7 @@ window.addEventListener('load', function () {
     //se encarga de llenar el formulario con los datos del odontologo
     //que se desea modificar
     function findBy(id) {
-          const url = '/odontologos'+"/"+id;
+          const url = URL_BASE + '/odontologos'+"/"+id;
           const settings = {
               method: 'GET'
           }
@@ -54,6 +82,7 @@ window.addEventListener('load', function () {
               //el formulario por default esta oculto y al editar se habilita
               document.querySelector('#div_odontologo_updating').style.display = "block";
           }).catch(error => {
-              alert("Error: " + error);
-          })
+            Swal.fire("Maldición!", error, "error");        })
       }
+
+
