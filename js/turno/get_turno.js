@@ -52,7 +52,7 @@ window.addEventListener('load', function () {
                     '<td>' + deleteButton + '</td>';
 
         };
-
+        document.getElementById("loading").style.display = "none";
         })
    
   })

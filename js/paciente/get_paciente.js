@@ -54,7 +54,7 @@ window.addEventListener('load', function () {
                     '<td>' + deleteButton + '</td>';
 
         };
-
+        document.getElementById("loading").style.display = "none";
     })
     })
 
@@ -70,7 +70,7 @@ window.addEventListener('load', function () {
     })
 
     function convertirFecha(fecha) {
-      return fecha.split("-").reverse().join("/");
+      return fecha?fecha.split("-").reverse().join("/"):"?";
     }
 
     
